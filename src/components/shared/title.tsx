@@ -13,6 +13,7 @@ export const Title: React.FC<Props> = ({ text, size = 'sm', className }) => {
     const mapTagBySize = {
         xs: 'h5',
         sm: 'h4',
+        [16]: 'p',
         md: 'h3',
         lg: 'h2',
         xl: 'h1',
