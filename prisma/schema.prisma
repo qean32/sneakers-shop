@@ -1,0 +1,145 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id Int @id @default(autoincrement())
+
+    fullname         String
+    email            String            @unique
+    password         String
+    Cart             Cart?
+    VerificationCode VerificationCode?
+    Order            Order[]
+    role             Role              @default(USER)
+
+    provider   String?
+    providerId String?
+
+    createdAt  DateTime @default(now())
+    updateadAt DateTime @updatedAt
+}
+
+model Brand {
+    id Int @id @default(autoincrement())
+
+    name     String     @unique
+    sneakers Sneakers[]
+    materil  Material[]
+}
+
+model SneakersItem {
+    id Int @id @default(autoincrement())
+
+    color String?
+    size  Int?
+    price Int
+
+    Sneakers   Sneakers @relation(fields: [Sneakersid], references: [id])
+    Sneakersid Int
+}
+
+model Sneakers {
+    id Int @id @default(autoincrement())
+
+    name  String
+    image String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    Brand        Brand?         @relation(fields: [brandId], references: [id])
+    brandId      Int?
+    SneakersItem SneakersItem[]
+    CartItem     CartItem[]
+}
+
+model Material {
+    id    Int    @id @default(autoincrement())
+    name  String @unique
+    price Int
+    image String
+
+    Brands   Brand[]
+    CartItem CartItem[]
+}
+
+model Cart {
+    id    Int    @id @default(autoincrement())
+    token String
+
+    TotalAmount Int @default(0)
+
+    User   User? @relation(fields: [UserId], references: [id])
+    UserId Int?  @unique
+
+    CartItem CartItem[]
+}
+
+model CartItem {
+    id Int @id @default(autoincrement())
+
+    Cart   Cart @relation(fields: [CartId], references: [id])
+    CartId Int
+
+    count Int
+
+    Sneakers   Sneakers @relation(fields: [SneakersId], references: [id])
+    SneakersId Int
+
+    Material Material[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Order {
+    id Int @id @default(autoincrement())
+
+    User   User? @relation(fields: [UserId], references: [id])
+    UserId Int
+
+    token String
+
+    totalAmount Int
+    status      OrderStatus
+    paymentId   String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    items Json
+
+    fullName String
+    email    String
+    phone    String
+    address  String
+    comment  String?
+}
+
+model VerificationCode {
+    id Int @id @default(autoincrement())
+
+    User   User @relation(fields: [UserId], references: [id])
+    UserId Int  @unique
+
+    code String
+
+    createdAt DateTime @default(now())
+}
+
+enum OrderStatus {
+    PENDING
+    SUCCESED
+    CENCELLED
+}
+
+enum Role {
+    USER
+    ADMIN
+}
