@@ -16,7 +16,7 @@ model User {
     Cart             Cart?
     VerificationCode VerificationCode?
     Order            Order[]
-    role             Role              @default(USER)
+    Role             Role              @default(USER)
 
     provider   String?
     providerId String?
@@ -30,7 +30,7 @@ model Brand {
 
     name     String     @unique
     sneakers Sneakers[]
-    materil  Material[]
+    material Material[]
 }
 
 model SneakersItem {
@@ -40,8 +40,10 @@ model SneakersItem {
     size  Int?
     price Int
 
-    Sneakers   Sneakers @relation(fields: [Sneakersid], references: [id])
-    Sneakersid Int
+    Sneakers   Sneakers @relation(fields: [SneakersId], references: [id])
+    SneakersId Int
+
+    CartItem CartItem[]
 }
 
 model Sneakers {
@@ -53,10 +55,9 @@ model Sneakers {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    Brand        Brand?         @relation(fields: [brandId], references: [id])
-    brandId      Int?
+    Brand        Brand?         @relation(fields: [BrandId], references: [id])
+    BrandId      Int?
     SneakersItem SneakersItem[]
-    CartItem     CartItem[]
 }
 
 model Material {
@@ -89,10 +90,10 @@ model CartItem {
 
     count Int
 
-    Sneakers   Sneakers @relation(fields: [SneakersId], references: [id])
-    SneakersId Int
+    SneakersItem   SneakersItem @relation(fields: [SneakersItemId], references: [id])
+    SneakersItemId Int
 
-    Material Material[]
+    materials Material[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -106,7 +107,7 @@ model Order {
 
     token String
 
-    totalAmount Int
+    TotalAmount Int
     status      OrderStatus
     paymentId   String?
 
@@ -115,7 +116,7 @@ model Order {
 
     items Json
 
-    fullName String
+    fullname String
     email    String
     phone    String
     address  String

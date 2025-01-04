@@ -1,4 +1,4 @@
-export const sneakers = [
+export const sneakers: { name: string, image: string }[] = [
     {
         name: "Nike Dunk Low Pacific Moss",
         image: "https://static.street-beat.ru/upload/iblock/f19/qk3pmkmume787uye3f0tvx400fi40avh.JPG",
@@ -31,17 +31,17 @@ export const brands = [
 export const materials = [
     {
         name: 'Резина',
-        price: 100,
+        price: 70,
         image: ''
     },
     {
         name: 'Ткань',
-        price: 100,
+        price: 200,
         image: ''
     },
     {
         name: 'Полимер',
-        price: 100,
+        price: 700,
         image: ''
     },
     {
@@ -51,7 +51,7 @@ export const materials = [
     },
     {
         name: 'Пластик',
-        price: 100,
+        price: 200,
         image: ''
     }
 ]

@@ -58,8 +58,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
             ?
             items.filter((item) => item.text.toLowerCase().includes(searchValue.toLocaleLowerCase()))
             :
-            (defaultItems || items).slice(0, limit);
-
+            (defaultItems || items.slice(0, limit))
     return (
         <div className={className}>
             <p className="font-bold mb-3">{title}</p>

@@ -1,0 +1,1 @@
+export const SNEAKERS_URL = '/sneakers/search'

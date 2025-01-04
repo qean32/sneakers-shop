@@ -3,6 +3,7 @@ import { Container } from './container';
 import { Categories } from './categories';
 import { SortPopUp } from './sort-popup';
 import { cn } from '@/lib/utils';
+import { SearchInput } from './search-input';
 
 interface Props {
     className?: string;

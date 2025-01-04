@@ -4,10 +4,6 @@ export default function Home() {
   return <>
 
     <TopBar />
-    <Container className="mt-8">
-      <Title text="Все экземпляры" className="font-extrabold" />
-    </Container>
-
     <Container className="pb-14">
       <div className="flex gap-[60px]">
         <div className="w-[170px]">
@@ -17,20 +13,6 @@ export default function Home() {
         <div>
           <div className="flex flex-col gap-10">
             <ProductsGroupList title={"Nike"} items={[
-              {
-                id: 1,
-                imageUrl: "https://static.street-beat.ru/upload/resize_cache/iblock/492/500_500_1/vq30ykohy9shilbicqj8uzjy53k505yw.jpg",
-                ingredients: [{ name: 'нат.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
-                name: "Nike Dunk Low Retro",
-                items: [{ price: 21999 }]
-              },
-              {
-                id: 2,
-                imageUrl: "https://static.street-beat.ru/upload/resize_cache/iblock/088/500_500_1/u17rsinz3o3uifbodlz93ys40kej5x3t.jpg",
-                ingredients: [{ name: 'нат.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
-                name: "Nike Giannis Immortality 4",
-                items: [{ price: 15999 }]
-              },
               {
                 id: 3,
                 imageUrl: "https://static.street-beat.ru/upload/iblock/f19/qk3pmkmume787uye3f0tvx400fi40avh.JPG",
@@ -62,20 +44,6 @@ export default function Home() {
             ]} categoryId={1} />
             <ProductsGroupList title={"Adidas"} items={[
               {
-                id: 1,
-                imageUrl: "https://static.street-beat.ru/upload/resize_cache/iblock/492/500_500_1/vq30ykohy9shilbicqj8uzjy53k505yw.jpg",
-                ingredients: [{ name: 'нат.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
-                name: "Nike Dunk Low Retro",
-                items: [{ price: 21999 }]
-              },
-              {
-                id: 2,
-                imageUrl: "https://static.street-beat.ru/upload/resize_cache/iblock/088/500_500_1/u17rsinz3o3uifbodlz93ys40kej5x3t.jpg",
-                ingredients: [{ name: 'нат.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
-                name: "Nike Giannis Immortality 4",
-                items: [{ price: 15999 }]
-              },
-              {
                 id: 3,
                 imageUrl: "https://static.street-beat.ru/upload/iblock/f19/qk3pmkmume787uye3f0tvx400fi40avh.JPG",
                 ingredients: [{ name: 'Нат.кожа/Синт.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
@@ -106,20 +74,6 @@ export default function Home() {
             ]} categoryId={2} />
             <ProductsGroupList title={"New Balance"} items={[
               {
-                id: 1,
-                imageUrl: "https://static.street-beat.ru/upload/resize_cache/iblock/492/500_500_1/vq30ykohy9shilbicqj8uzjy53k505yw.jpg",
-                ingredients: [{ name: 'нат.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
-                name: "Nike Dunk Low Retro",
-                items: [{ price: 21999 }]
-              },
-              {
-                id: 2,
-                imageUrl: "https://static.street-beat.ru/upload/resize_cache/iblock/088/500_500_1/u17rsinz3o3uifbodlz93ys40kej5x3t.jpg",
-                ingredients: [{ name: 'нат.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
-                name: "Nike Giannis Immortality 4",
-                items: [{ price: 15999 }]
-              },
-              {
                 id: 3,
                 imageUrl: "https://static.street-beat.ru/upload/iblock/f19/qk3pmkmume787uye3f0tvx400fi40avh.JPG",
                 ingredients: [{ name: 'Нат.кожа/Синт.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
@@ -149,20 +103,6 @@ export default function Home() {
               }
             ]} categoryId={3} />
             <ProductsGroupList title={"Other"} items={[
-              {
-                id: 1,
-                imageUrl: "https://static.street-beat.ru/upload/resize_cache/iblock/492/500_500_1/vq30ykohy9shilbicqj8uzjy53k505yw.jpg",
-                ingredients: [{ name: 'нат.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
-                name: "Nike Dunk Low Retro",
-                items: [{ price: 21999 }]
-              },
-              {
-                id: 2,
-                imageUrl: "https://static.street-beat.ru/upload/resize_cache/iblock/088/500_500_1/u17rsinz3o3uifbodlz93ys40kej5x3t.jpg",
-                ingredients: [{ name: 'нат.кожа' }, { name: 'текстиль' }, { name: 'резина' }],
-                name: "Nike Giannis Immortality 4",
-                items: [{ price: 15999 }]
-              },
               {
                 id: 3,
                 imageUrl: "https://static.street-beat.ru/upload/iblock/f19/qk3pmkmume787uye3f0tvx400fi40avh.JPG",

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
-import { Container } from '.'
+import { Container, SearchInput } from '.'
 import { Button, Input } from '../ui/index'
 import { ArrowRight, ShoppingCart, User } from 'lucide-react'
 
@@ -21,7 +21,7 @@ export const Header: React.FC<Props> = ({ className }) => {
                 </div>
 
                 <div className="mx-10 flex-1 max-w-6xl">
-                    <Input placeholder='поиск' />
+                    <SearchInput />
                 </div>
 
                 <div className="flex items-center gap-3">
