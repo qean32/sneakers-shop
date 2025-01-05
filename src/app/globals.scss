@@ -72,3 +72,14 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+.scrollbar-no::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-no {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overscroll-behavior: none;
+}

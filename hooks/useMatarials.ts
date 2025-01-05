@@ -1,14 +1,9 @@
-'use client'
-
 import { Material } from "@prisma/client"
 import React from "react"
 import { Api } from "../services/api-client"
-import { useSet } from "react-use"
 
-export const useFilterMaterials = () => {
+export const useMaterials = () => {
     const [materials, setMaterials] = React.useState<Material[]>()
-
-    const [selectedMaterials, { toggle }] = useSet(new Set<string>([]))
 
     React.useEffect(() => {
         Api.materials.get()
@@ -16,5 +11,5 @@ export const useFilterMaterials = () => {
             .catch((error) => console.log(error))
     }, [])
 
-    return { materials, selectedMaterials, toggle } as { materials: Material[], selectedMaterials: any, toggle: (id: string) => void }
+    return { materials } as { materials: Material[] }
 }

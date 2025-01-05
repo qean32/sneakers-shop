@@ -3,6 +3,7 @@
 import React from 'react';
 import { FilterChecboxProps, FilterCheckbox } from './filter-checkbox';
 import { Skeleton, Input } from '../ui';
+import { cn } from '@/lib/utils';
 
 type Item = FilterChecboxProps;
 
@@ -60,7 +61,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
             :
             (defaultItems || items.slice(0, limit))
     return (
-        <div className={className}>
+        <div className={cn(className)}>
             <p className="font-bold mb-3">{title}</p>
 
             {showAll && (
@@ -73,7 +74,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
                 </div>
             )}
 
-            <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
+            <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar scrollbar-no">
                 {list.map((item, index) => (
                     <FilterCheckbox
                         key={index}
