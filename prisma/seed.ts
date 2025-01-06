@@ -17,7 +17,7 @@ const generateSneakersItem = ({
 }) => {
     return {
         SneakersId,
-        price: RndPrice(20, 140),
+        price: RndPrice(2600, 16000),
         size,
         color
     }
@@ -58,6 +58,9 @@ const create = async () => {
             name: "Nike Dunk Low Retro",
             BrandId: 1,
             image: "https://static.street-beat.ru/upload/resize_cache/iblock/492/500_500_1/vq30ykohy9shilbicqj8uzjy53k505yw.jpg",
+            materials: {
+                connect: [{ id: 4 }, { id: 3 }],
+            },
         }
     })
 
@@ -66,39 +69,71 @@ const create = async () => {
             BrandId: 1,
             name: "Nike Giannis Immortality 4",
             image: "https://static.street-beat.ru/upload/resize_cache/iblock/088/500_500_1/u17rsinz3o3uifbodlz93ys40kej5x3t.jpg",
+            materials: {
+                connect: [{ id: 1 }, { id: 3 }],
+            },
         }
     })
 
     const sneakers3 = await prisma.sneakers.create({
         data: {
-            BrandId: 1,
-            image: "https://static.street-beat.ru/upload/resize_cache/iblock/c12/500_500_1/xltxybzr3fes4lrjh6ciy3hx9wilax4c.JPG",
-            name: "Nike Court Borough Mid 2",
+            BrandId: 2,
+            name: "Adidas Air More Uptempo 96",
+            image: "https://static.street-beat.ru/upload/resize_cache/iblock/af0/500_500_1/iv38ccaukpzjugb0ygzy9789pqo34407.jpg",
+            materials: {
+                connect: [{ id: 1 }, { id: 2 }],
+            },
         }
     })
 
     await prisma.sneakersItem.createMany({
         data: [
             generateSneakersItem({ SneakersId: sneakers1.id, size: 42, color: 'red' }),
-            generateSneakersItem({ SneakersId: sneakers1.id, size: 41, color: 'red' }),
+            generateSneakersItem({ SneakersId: sneakers1.id, size: 41, color: 'blue' }),
             generateSneakersItem({ SneakersId: sneakers1.id, size: 43, color: 'red' }),
-            generateSneakersItem({ SneakersId: sneakers1.id, size: 44, color: 'red' }),
+            generateSneakersItem({ SneakersId: sneakers1.id, size: 44, color: 'white' }),
 
 
-            generateSneakersItem({ SneakersId: sneakers2.id, size: 42, color: 'white' }),
+            generateSneakersItem({ SneakersId: sneakers2.id, size: 42, color: 'blue' }),
             generateSneakersItem({ SneakersId: sneakers2.id, size: 41, color: 'white' }),
-            generateSneakersItem({ SneakersId: sneakers2.id, size: 43, color: 'white' }),
-            generateSneakersItem({ SneakersId: sneakers2.id, size: 44, color: 'white' }),
+            generateSneakersItem({ SneakersId: sneakers2.id, size: 43, color: 'blue' }),
+            generateSneakersItem({ SneakersId: sneakers2.id, size: 44, color: 'red' }),
 
 
             generateSneakersItem({ SneakersId: sneakers3.id, size: 42, color: 'blue' }),
             generateSneakersItem({ SneakersId: sneakers3.id, size: 41, color: 'blue' }),
-            generateSneakersItem({ SneakersId: sneakers3.id, size: 43, color: 'blue' }),
-            generateSneakersItem({ SneakersId: sneakers3.id, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: sneakers3.id, size: 43, color: 'white' }),
+            generateSneakersItem({ SneakersId: sneakers3.id, size: 44, color: 'red' }),
 
-            generateSneakersItem({ SneakersId: 1 }),
-            generateSneakersItem({ SneakersId: 2 }),
-            generateSneakersItem({ SneakersId: 3 }),
+            generateSneakersItem({ SneakersId: 1, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 1, size: 44, color: 'red' }),
+
+            generateSneakersItem({ SneakersId: 2, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 2, size: 44, color: 'red' }),
+
+            generateSneakersItem({ SneakersId: 9, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 9, size: 44, color: 'red' }),
+
+            generateSneakersItem({ SneakersId: 3, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 3, size: 44, color: 'red' }),
+
+            generateSneakersItem({ SneakersId: 5, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 5, size: 44, color: 'red' }),
+
+            generateSneakersItem({ SneakersId: 4, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 4, size: 44, color: 'red' }),
+
+            generateSneakersItem({ SneakersId: 14, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 14, size: 44, color: 'red' }),
+
+            generateSneakersItem({ SneakersId: 12, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 12, size: 44, color: 'red' }),
+
+            generateSneakersItem({ SneakersId: 10, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 10, size: 44, color: 'red' }),
+
+            generateSneakersItem({ SneakersId: 11, size: 44, color: 'blue' }),
+            generateSneakersItem({ SneakersId: 11, size: 44, color: 'red' }),
         ]
     })
 
@@ -122,9 +157,6 @@ const create = async () => {
             SneakersItemId: 1,
             CartId: 1,
             count: 2,
-            materials: {
-                connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
-            },
         },
     });
 }

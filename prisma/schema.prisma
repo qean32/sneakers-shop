@@ -30,7 +30,6 @@ model Brand {
 
     name     String     @unique
     sneakers Sneakers[]
-    material Material[]
 }
 
 model SneakersItem {
@@ -55,9 +54,11 @@ model Sneakers {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    Brand        Brand?         @relation(fields: [BrandId], references: [id])
-    BrandId      Int?
+    Brand   Brand? @relation(fields: [BrandId], references: [id])
+    BrandId Int?
+
     SneakersItem SneakersItem[]
+    materials    Material[]
 }
 
 model Material {
@@ -66,8 +67,9 @@ model Material {
     price Int
     image String
 
-    Brands   Brand[]
-    CartItem CartItem[]
+    CartItem       CartItem[]
+    Sneakers       Sneakers?     @relation(fields: [sneakersId], references: [id])
+    sneakersId     Int?
 }
 
 model Cart {
@@ -93,7 +95,7 @@ model CartItem {
     SneakersItem   SneakersItem @relation(fields: [SneakersItemId], references: [id])
     SneakersItemId Int
 
-    materials Material[]
+    addmaterials Material[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

@@ -1,6 +1,22 @@
 import { TopBar, Container, ProductsGroupList, Title, Filters } from "@/components/shared";
+import { prisma } from "../../prisma/prisma-client";
+import { sneakers } from "../../prisma/data";
 
-export default function Home() {
+export default async function Home() {
+
+  const category = await prisma.brand.findMany({
+    include: {
+      sneakers: {
+        include: {
+          materials: true,
+          SneakersItem: true
+        }
+      }
+    }
+  })
+
+  console.log(category)
+
   return <>
 
     <TopBar />
