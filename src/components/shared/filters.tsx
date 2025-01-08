@@ -36,13 +36,14 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
             <CheckboxFiltersGroup
                 onClickCheckbox={setType}
-                title="Тип обуви"
-                name="types"
+                title="Цвет"
+                name="color"
                 className="mb-5"
                 selected={selectedType}
                 items={[
-                    { text: 'Кроссовки', value: '1' },
-                    { text: 'Кеды', value: '2' },
+                    { text: 'белый', value: 'white' },
+                    { text: 'синий', value: 'blue' },
+                    { text: 'красный', value: 'red' },
                 ]}
             />
 
@@ -50,16 +51,14 @@ export const Filters: React.FC<Props> = ({ className }) => {
                 selected={selectedSize}
                 onClickCheckbox={setSize}
                 title="Размеры"
-                name="sizes"
+                name="size"
                 className="mb-5"
                 limit={3}
                 items={[
+                    { text: '41', value: '41' },
                     { text: '42', value: '42' },
                     { text: '43', value: '43' },
                     { text: '44', value: '44' },
-                    { text: '45', value: '45' },
-                    { text: '46', value: '46' },
-                    { text: '47', value: '47' },
                 ]}
             />
 

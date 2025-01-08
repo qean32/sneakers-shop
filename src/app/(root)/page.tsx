@@ -1,18 +1,11 @@
 import { TopBar, Container, ProductsGroupList, Title, Filters } from "@/components/shared";
-import { prisma } from "../../prisma/prisma-client";
+import { prisma } from "../../../prisma/prisma-client";
+import { findSneakers } from "@/lib/find-sneakers";
 
-export default async function Home() {
-
-  const brands = await prisma.brand.findMany({
-    include: {
-      sneakers: {
-        include: {
-          materials: true,
-          SneakersItem: true
-        }
-      }
-    }
-  })
+export default async function Home({ searchParams }: any) {
+  const searchParams_ = await searchParams
+  console.log(searchParams_)
+  const brands = await findSneakers(searchParams_)
 
   return <>
 

@@ -18,12 +18,4 @@ export const SneakersForm: React.FC<Props> = ({ sneakers, onSubmit: _onSubmit })
             onSubmit={() => { }}
         />
     );
-
-    // return (
-    //     <ChooseProductForm
-    //         imageUrl={sneakers.image}
-    //         name={sneakers.name}
-    //         price={firstItem.price}
-    //     />
-    // );
 };

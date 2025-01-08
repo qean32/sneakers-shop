@@ -14,10 +14,10 @@ export const SneakersImage: React.FC<Props> = ({ imageUrl, size, className }) =>
                 src={imageUrl}
                 alt="Logo"
                 className={cn('relative -translate-y-44 transition-all z-10 duration-300', {
-                    'w-[500px]': size === 41,
-                    'w-[510px]': size === 42,
-                    'w-[520px]': size === 43,
-                    'w-[530px]': size === 44,
+                    'w-[440px]': size === 41,
+                    'w-[465px]': size === 42,
+                    'w-[470px]': size === 43,
+                    'w-[475px]': size === 44,
                 })}
             />
 

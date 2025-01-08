@@ -15,14 +15,17 @@ export const metadata: Metadata = {
 
 export default function layout({
     children,
+    modal
 }
     :
     {
         children: React.ReactNode;
+        modal: React.ReactNode
     }) {
     return (
         <main className="min-h-screen">
             {children}
+            {modal}
         </main>
     );
 }
