@@ -8,10 +8,34 @@ import { cn } from '@/lib/utils';
 import { ProductCard } from './product-card';
 import { useCategoryStore } from '@/store';
 
+interface MaterialsInterface {
+    name: string
+    id: number
+    price: number
+    image: string
+    sneakersId: number | null
+}
+
+interface SneakersItemInterface {
+    id: number
+    color: string | null
+    size: number | null
+    price: number
+    SneakersId: number
+}
+
+interface SneakersInterface {
+    id: number
+    name: string
+    image: string
+    SneakersItem: SneakersItemInterface[]
+    materials: MaterialsInterface[]
+}
+
 interface Props {
     title: string;
-    items: { id: number, name: string, imageUrl: string, items: { price: number }[], ingredients: { name: string }[] }[];
-    categoryId: number;
+    items: SneakersInterface[],
+    BrandId: number;
     className?: string;
     listClassName?: string;
 }
@@ -20,7 +44,7 @@ export const ProductsGroupList: React.FC<Props> = ({
     title,
     items,
     listClassName,
-    categoryId,
+    BrandId,
     className,
 }) => {
     const setCategoryId = useCategoryStore((state) => state.setCurrentId)
@@ -30,22 +54,22 @@ export const ProductsGroupList: React.FC<Props> = ({
     })
 
     React.useEffect(() => {
-        intersection?.isIntersecting && setCategoryId(categoryId)
-    }, [intersection?.isIntersecting, title, categoryId])
+        intersection?.isIntersecting && setCategoryId(BrandId)
+    }, [intersection?.isIntersecting, title, BrandId])
 
     return (
-        <div className={cn(className, 'w-[1000]')} id={title} ref={intersectionRef}>
+        <div className={cn(className, 'w-[900]')} id={title} ref={intersectionRef}>
             <Title text={title} size="lg" className="font-extrabold mb-5" />
 
-            <div className={cn('grid grid-cols-4 gap-2', listClassName)}>
-                {items.map((product) => (
+            <div className={cn('grid grid-cols-3 gap-2', listClassName)}>
+                {items.map((sneakers) => (
                     <ProductCard
-                        key={product.id}
-                        id={product.id}
-                        name={product.name}
-                        imageUrl={product.imageUrl}
-                        price={product.items[0].price}
-                        ingredients={product.ingredients}
+                        key={sneakers.id}
+                        id={sneakers.id}
+                        name={sneakers.name}
+                        imageUrl={sneakers.image}
+                        price={sneakers.SneakersItem[0] && sneakers.SneakersItem[0].price}
+                        ingredients={sneakers.materials}
                     />
                 ))}
             </div>

@@ -15,25 +15,28 @@ export const ProductCard: React.FC<{
 }> = ({
     id,
     name,
-    price,
+    price = 100,
     imageUrl,
     ingredients,
     className = 'duration-200',
 }) => {
         return (
             <div className={cn(className, 'hover:-translate-y-2')}>
-                <Link href={`/product/${id}`}>
+                <Link href={`/sneakers/${id}`}>
                     <div className="flex justify-center rounded-lg h-[170px]">
-                        <div className="w-[170px] h-[170px] rounded-md duration-200" style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "cover" }}> </div>
+                        <div
+                            className="w-[170px] h-[170px] rounded-md duration-200"
+                            style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: "cover" }}
+                        > </div>
                     </div>
 
-                    <Title text={name} size="sm" className="mt-4 h-24" />
+                    <Title text={name} size="sm" className="mt-4 h-[40px]" />
 
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-400 h-[40px]">
                         {ingredients.map((ingredient: any) => ingredient.name).join(', ')}
                     </p>
 
-                    <div className="flex justify-between items-center mt-1 mb-2 gap-2">
+                    <div className="flex justify-between items-center mt-1 mb-2 gap-2 h-[40px]">
                         <span className="text-[20px]">
                             <p className='font-bold pl-1'>{price} ₽</p>
                         </span>

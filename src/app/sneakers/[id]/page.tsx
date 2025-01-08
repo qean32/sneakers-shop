@@ -1,16 +1,38 @@
-'use client'
-
-import { cn } from '@/lib/utils'
 import React from 'react'
+import { notFound } from 'next/navigation'
+import { Container } from '@/components/shared'
+import { SneakersForm } from '@/components/shared/sneakers-from'
+import { prisma } from '../../../../prisma/prisma-client'
 
-interface Props {
-    className?: string
-}
+
+export default async function ({ params: { id } }: { params: { id: string } }) {
+    const sneakers = await prisma.sneakers.findFirst({
+        where: {
+            id: Number(id)
+        },
+        include: {
+            materials: true,
+            Brand: {
+                include: {
+                    sneakers: {
+                        include: {
+                            SneakersItem: true
+                        }
+                    }
+                }
+            },
+            SneakersItem: true
+        }
+    })
+
+    if (!sneakers) {
+        return notFound()
+    }
 
 
-export default function (className: any) {
     return (
-        <div className={cn('', className)}>
-        </div>
+        <Container className="flex flex-col my-10">
+            <SneakersForm sneakers={sneakers} />
+        </Container>
     )
 }

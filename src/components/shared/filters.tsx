@@ -5,11 +5,11 @@ import { Title } from './title';
 import { Button, Input } from '../ui';
 import { CheckboxFiltersGroup, RangeSlider } from '.';
 import { Material } from '@prisma/client';
-import { useFilters } from '../../../hooks/useFilters';
+import { useFilters } from './hooks/useFilters';
 import { useRouter } from 'next/router';
 import qs from 'qs';
-import { useMaterials } from '../../../hooks/useMatarials';
-import { useSearhQuery } from '../../../hooks/useSearchQuery';
+import { useMaterials } from './hooks/useMatarials';
+import { useSearhQuery } from './hooks/useSearchQuery';
 
 interface Props {
     className?: string;
