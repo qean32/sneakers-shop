@@ -67,9 +67,9 @@ model Material {
     price Int
     image String
 
-    CartItem       CartItem[]
-    Sneakers       Sneakers?     @relation(fields: [sneakersId], references: [id])
-    sneakersId     Int?
+    CartItem   CartItem[]
+    Sneakers   Sneakers?  @relation(fields: [sneakersId], references: [id])
+    sneakersId Int?
 }
 
 model Cart {
@@ -81,7 +81,7 @@ model Cart {
     User   User? @relation(fields: [UserId], references: [id])
     UserId Int?  @unique
 
-    CartItem CartItem[]
+    CartItems CartItem[]
 }
 
 model CartItem {
@@ -95,7 +95,7 @@ model CartItem {
     SneakersItem   SneakersItem @relation(fields: [SneakersItemId], references: [id])
     SneakersItemId Int
 
-    addmaterials Material[]
+    materials Material[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

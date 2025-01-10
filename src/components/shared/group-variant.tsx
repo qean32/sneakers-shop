@@ -23,7 +23,7 @@ export const GroupVariants: React.FC<Props> = ({ items, onClick, className, valu
       {items.map((item) => (
         <button
           key={item.name}
-          onClick={() => { onClick?.(item.value); console.log('zxc') }}
+          onClick={() => onClick?.(item.value)}
           className={cn(
             'flex items-center justify-center cursor-pointer h-[30px] px-5 flex-1 rounded-lg transition-all duration-400 text-sm',
             {

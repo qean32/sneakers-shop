@@ -19,8 +19,6 @@ export const findSneakers = async (params: GetSearchParams) => {
     const sneakersColor = params.color?.split(',').map(Number);
     const ingredientsIdArr = params.materials?.split(',').map(Number);
 
-    console.log(sizes, sneakersColor, ingredientsIdArr)
-
     const minPrice = Number(params.priceFrom) || DEFAULT_MIN_PRICE;
     const maxPrice = Number(params.priceTo) || DEFAULT_MAX_PRICE;
 

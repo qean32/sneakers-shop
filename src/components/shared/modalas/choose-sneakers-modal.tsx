@@ -5,6 +5,9 @@ import { SneakersWithRelations } from "../../../../@types/prisma";
 import { DialogContent, Dialog, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { ChooseSneakersForm } from "..";
+import { useCartStore } from "@/store";
+import toast from "react-hot-toast";
+import { sneakers } from "../../../../prisma/data";
 
 
 interface Props {
@@ -14,6 +17,26 @@ interface Props {
 
 export const ChooseSneakersModal: React.FC<Props> = ({ product, className }) => {
     const router = useRouter();
+    const create = useCartStore()
+    const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
+        try {
+            console.log('add')
+            const itemId = productItemId;
+
+            if (itemId && ingredients) {
+                await create.createCartItem({
+                    sneakersId: itemId,
+                    materials: ingredients,
+                });
+            }
+
+            toast.success(product.name + ' добавлена в корзину');
+
+        } catch (err) {
+            toast.error('Не удалось добавить товар в корзину');
+            console.error(err);
+        }
+    };
 
     return (
         <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
@@ -30,7 +53,7 @@ export const ChooseSneakersModal: React.FC<Props> = ({ product, className }) => 
                     name={product.name}
                     ingredients={product.materials}
                     items={product.SneakersItem}
-                    onSubmit={() => { }}
+                    onSubmit={onSubmit}
                 />
             </DialogContent>
         </Dialog>

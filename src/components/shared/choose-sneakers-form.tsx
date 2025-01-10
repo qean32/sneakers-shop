@@ -6,7 +6,7 @@ import { GroupVariants, SneakersImage, Title } from ".";
 import { MaterialItem } from "./material-item";
 import { Material, Sneakers, SneakersItem } from "@prisma/client";
 import { useSneakersOptions } from "./hooks/useSneakersOptions";
-import { getSneakersDetails } from "@/lib/get-sneakers-delaials";
+import { getSneakersDetails } from "@/lib/get-sneakers-details";
 import { SneakersColor, SneakersColors, SneakersSize } from "./constants/sneakers";
 
 
@@ -51,6 +51,7 @@ export const ChooseSneakersForm: React.FC<Props> = ({
     );
 
     const handleClickAdd = () => {
+        console.log(currentItemId)
         if (currentItemId) {
             onSubmit(currentItemId, Array.from(selectedIngredients));
         }
@@ -93,11 +94,12 @@ export const ChooseSneakersForm: React.FC<Props> = ({
                     </div>
                 </div>
 
-                <Button
-                    onSubmit={handleClickAdd}
-                    className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
-                    Добавить в корзину за {totalPrice}₽
-                </Button>
+                <div onClick={handleClickAdd}>
+                    <Button
+                        className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+                        Добавить в корзину за {totalPrice}₽
+                    </Button>
+                </div>
             </div>
         </div>
     );

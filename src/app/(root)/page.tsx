@@ -4,7 +4,6 @@ import { findSneakers } from "@/lib/find-sneakers";
 
 export default async function Home({ searchParams }: any) {
   const searchParams_ = await searchParams
-  console.log(searchParams_)
   const brands = await findSneakers(searchParams_)
 
   return <>
@@ -17,7 +16,7 @@ export default async function Home({ searchParams }: any) {
         </div>
         <div className="flex flex-col gap-10">
           {brands && brands.map((brand) =>
-            <ProductsGroupList title={brand.name} items={brand.sneakers} BrandId={brand.id} />
+            <ProductsGroupList title={brand.name} items={brand.sneakers} BrandId={brand.id} key={brand.name} />
           )}
         </div>
       </div>
