@@ -4,18 +4,18 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogDescription, DialogTitle, Title } from '@radix-ui/react-dialog';
-import { Sheet, ArrowLeft, Link, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '../ui';
 import { SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose, SheetFooter } from '../ui/sheet';
 import { CartDrawerItem } from './cart-drawer-item';
 import { SneakersColor, SneakersSize } from './constants/sneakers';
 import { useCart } from './hooks/useCart';
 import { getCartItemDetails } from '@/lib/get-cart-item-details';
+import Link from 'next/link';
 
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
     const { totalAmount, updateCartItem, CartItem, removeCartItem } = useCart();
-    const [redirecting, setRedirecting] = React.useState(false);
 
     const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
         const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
@@ -47,10 +47,10 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                             </p>
 
                             <SheetClose>
-                                {/* <Button className="w-56 h-12 text-base" size="lg">
+                                <Button className="w-56 h-12 text-base" size="lg">
                                     <ArrowLeft className="w-5 mr-2" />
                                     Вернуться назад
-                                </Button> */}
+                                </Button>
                             </SheetClose>
                         </div>
                     )}
@@ -92,15 +92,16 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                                         <span className="font-bold text-lg">{totalAmount} ₽</span>
                                     </div>
 
-                                    <Link href="/checkout">
-                                        <Button
-                                            onClick={() => setRedirecting(true)}
-                                            type="submit"
-                                            className="w-full h-12 text-base">
-                                            Оформить заказ
-                                            <ArrowRight className="w-5 ml-2" />
-                                        </Button>
-                                    </Link>
+                                    <SheetTrigger>
+                                        <Link href="/checkout">
+                                            <Button
+                                                type="submit"
+                                                className="w-full h-12 text-base">
+                                                Оформить заказ
+                                                <ArrowRight className="w-5 ml-2" />
+                                            </Button>
+                                        </Link>
+                                    </SheetTrigger>
                                 </div>
                             </SheetFooter>
                         </>

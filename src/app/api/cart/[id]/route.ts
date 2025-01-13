@@ -33,9 +33,6 @@ export async function PATCH(req: NextRequest, { params }: any) {
       },
     });
 
-
-    console.log(cartItem)
-
     const updatedUserCart = await updateCartTotalAmount(token || '');
 
     return NextResponse.json(updatedUserCart);

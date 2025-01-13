@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { prisma } from '../../../../../../prisma/prisma-client';
-import { ChooseSneakersModal } from '@/components/shared/modalas/choose-sneakers-modal';
+import { ChooseSneakersModal } from '@/components/shared/modals/choose-sneakers-modal';
 
 export default async function ({ params }: any) {
     const { id } = await params

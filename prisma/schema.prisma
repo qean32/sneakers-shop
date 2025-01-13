@@ -138,7 +138,7 @@ model VerificationCode {
 
 enum OrderStatus {
     PENDING
-    SUCCESED
+    SUCCESEED
     CENCELLED
 }
 

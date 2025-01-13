@@ -20,7 +20,6 @@ export const ChooseSneakersModal: React.FC<Props> = ({ product, className }) => 
     const create = useCartStore()
     const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
         try {
-            console.log('add')
             const itemId = productItemId;
 
             if (itemId && ingredients) {

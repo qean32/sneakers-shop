@@ -69,7 +69,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Если товар был найден, делаем +1
     if (findCartItem) {
       await prisma.cartItem.update({
         where: {
