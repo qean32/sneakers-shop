@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.scss";
 import { Header } from "@/components/shared/header";
 import { Toaster } from "react-hot-toast";
+import { Providers } from "@/components/shared/providers";
 
 
 const nunito = Nunito({
@@ -27,9 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${nunito.variable} ${nunito.variable} antialiased`}>
         <main className="min-h-screen">
-          <Header className="" />
-          <Toaster position="top-center" />
-          {children}
+          <Providers>{children}</Providers>
         </main>
       </body>
     </html>

@@ -7,7 +7,7 @@ export default async function Home({ searchParams }: any) {
 
   return <>
     <TopBar brands={brands.filter((brand) => brand.sneakers.length > 0)} />
-    <Container className="pb-14">
+    <Container className="pb-14 pt-7">
       <div className="flex gap-[60px] justify-between">
         <div className="w-[170px]">
           <Filters />
