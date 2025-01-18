@@ -32,7 +32,7 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
     try {
       await updateUserInfo({
         email: data.email,
-        fullName: data.fullName,
+        fullname: data.fullName,
         password: data.password,
       });
 
